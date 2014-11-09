@@ -393,7 +393,6 @@ class TextureSet(QtGui.QStandardItem):
                 self.nodeList.append(newFileTextureNode.node)
 
                 if createLayered:
-                    # TODO: set over as default
                     newFileTextureAttr = newFileTextureNode.node + '.outColor'
                     newLayeredTextureAttr = self.LayeredTexture + '.inputs[{0}].color'.format(i)
                     pm.connectAttr(newFileTextureAttr, newLayeredTextureAttr, f=True)
