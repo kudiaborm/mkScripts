@@ -10,9 +10,11 @@ class Modeling():
     def combine(cls):
         name = pm.selected()[0].name()
         pm.polyUnite(ch=0, n=name)
+        cls.deleteHistory()
 
     @classmethod
     def separate(cls):
+        pm.undoInfo(ock=True)
         for item in pm.selected():
             objs = pm.polySeparate(item, ch=0)
             padding = len(str(len(objs))) + 1
@@ -20,7 +22,8 @@ class Modeling():
             for obj in objs:
                 pm.rename("{0}_{1:0{2}d}".format(item, count, padding))
                 count += 1
-
+        cls.deleteHistory()
+        pm.undoInfo(cck=True)
     @classmethod
     def deleteHistory(cls):
         pm.delete(ch=True)
