@@ -33,3 +33,7 @@ class Modeling():
         currPanel = pm.getPanel(wf=True)
         state = pm.modelEditor(currPanel, q=True, wos=True)
         pm.modelEditor(currPanel, e=True, wos=not state)
+
+    @classmethod
+    def freezeTransformations(cls):
+        pm.makeIdentity(a=True)
